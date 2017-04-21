@@ -37,6 +37,10 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
 			<db:parameterized-query><![CDATA[SELECT * FROM FLIGHTS]]></db:parameterized-query>
 		</db:select>
 		<json:object-to-json-transformer doc:name="Object to JSON" />
+        <message-properties-transformer doc:name="Message Properties">
+            <add-message-property key="Content-Type2" value="application/json"/>
+        </message-properties-transformer>
+        <logger message="#['DBG message is:' + message]" level="INFO" doc:name="Logger"/>
 	</flow>
 	
 	<flow name="logFlights">

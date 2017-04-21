@@ -13,6 +13,7 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
     </munit:test>
     <munit:test name="new-test-suite-retrieveFlightsTest" description="Test">
         <flow-ref name="retrieveFlights" doc:name="Flow-ref to retrieveFlights"/>
-        <munit:assert-on-equals message="content type mis-match" expectedValue="'application/json'" actualValue="#[message.inboundProperties['Content-Type']]" doc:name="Assert Equals"/>
+        <logger message="#[message]" level="INFO" doc:name="Logger"/>
+        <munit:assert-on-equals message="content mis-match" expectedValue="#['application/json']" actualValue="#[message.outboundProperties['Content-Type2']]" doc:name="Assert Equals"/>
     </munit:test>
 </mule>

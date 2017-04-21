@@ -11,4 +11,8 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
         <flow-ref name="helloMuleFlow" doc:name="helloMuleFlow"/>
         <munit:assert-on-equals message="Expected/Actual values don't match." expectedValue="#['Hello Mule']" actualValue="#[payload]" doc:name="Assert Equals"/>
     </munit:test>
+    <munit:test name="new-test-suite-retrieveFlightsTest" description="Test">
+        <flow-ref name="retrieveFlights" doc:name="Flow-ref to retrieveFlights"/>
+        <munit:assert-on-equals message="content type mis-match" expectedValue="'application/json'" actualValue="#[message.inboundProperties['Content-Type']]" doc:name="Assert Equals"/>
+    </munit:test>
 </mule>
